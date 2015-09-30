@@ -121,8 +121,68 @@ int test_dmp_add_s()
                 return 1;
             }
         }
-        return 0;
     }
+    return 0;
+}
+
+int test_dmp_sub_s()
+{
+    {
+        char s[6][3][100] = {
+            {"9", "9", "0"},
+            {"010010", "1", "10009"},
+            {"990", "90", "900"},
+            {"1900", "900", "1000"},
+            {"1900", "1000", "900"},
+            {"999999999999999999999999999","1", "999999999999999999999999998"},
+        };
+        int i;
+        for (i=0; i<5; i++) {
+            dmp_t a, b, c;
+            int an[100], bn[100], cn[100];
+            dmp_init(&a, 100, an);
+            dmp_init(&b, 100, bn);
+            dmp_init(&c, 100, cn);
+            dmp_load_str(&a, s[i][0]);
+            dmp_load_str(&b, s[i][1]);
+            dmp_sub_s(&c, &a, &b);
+            char res[100];
+            if (!DS_EQUAL_STR(dmp_get_str(&c, res), s[i][2])) {
+                DS_LOG_DEBUG("dmp_add_s no good, case %d: c: %s expected: %s", i, dmp_get_str(&c, res), s[i][2]);
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+int test_dmp_mul_s()
+{
+    {
+        char s[4][3][100] = {
+            {"10000000000", "10", "100000000000"},
+            {"1", "100000000000000", "100000000000000"},
+            {"99", "99", "9801"},
+            {"123456789", "987654321", "121932631112635269"},
+        };
+        int i;
+        for (i=0; i<4; i++) {
+            dmp_t a, b, c;
+            int an[100], bn[100], cn[100];
+            dmp_init(&a, 100, an);
+            dmp_init(&b, 100, bn);
+            dmp_init(&c, 100, cn);
+            dmp_load_str(&a, s[i][0]);
+            dmp_load_str(&b, s[i][1]);
+            dmp_mul_s(&c, &a, &b);
+            char res[100];
+            if (!DS_EQUAL_STR(dmp_get_str(&c, res), s[i][2])) {
+                DS_LOG_DEBUG("dmp_add_s no good, case %d: c: %s expected: %s", i, dmp_get_str(&c, res), s[i][2]);
+                return 1;
+            }
+        }
+    }
+    return 0;
 }
 
 int run_tests()
@@ -155,6 +215,15 @@ int run_tests()
     overall = overall + res;
     printf("* test_dmp_add_s: %s\n\n", !res?"PASS":"FAILED");
 
+    printf("* Running test_dmp_sub_s\n");
+    res = test_dmp_sub_s();
+    overall = overall + res;
+    printf("* test_dmp_sub_s: %s\n\n", !res?"PASS":"FAILED");
+
+    printf("* Running test_dmp_mul_s\n");
+    res = test_dmp_mul_s();
+    overall = overall + res;
+    printf("* test_dmp_mul_s: %s\n\n", !res?"PASS":"FAILED");
     return overall;
 }
 
