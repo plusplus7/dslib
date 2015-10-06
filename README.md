@@ -3,7 +3,8 @@ dslib
 Codes for programming competitions and contests
 
 
-## ds_debug.h
+ds_debug.h
+=============
 
 For debug and test
 
@@ -29,21 +30,22 @@ Return bool
     DS_EQUAL_FLOAT(c, d)
     DS_EQUAL_STR(e, f)
 
-### ds_multiple_precision.h
+ds_multiple_precision.h
+=============
 
-##### DMP_ABS(x)
+#### DMP_ABS(x)
 
 Returns |x|
 
-##### DMP_MAX(a, b)
+#### DMP_MAX(a, b)
 
 Returns max(a, b)
 
-##### DMP_MIN(a, b)
+#### DMP_MIN(a, b)
 
 Returns min(a, b)
 
-##### dmp_t* dmp_new(dmp_t *r, int n)
+#### dmp_t* dmp_new(dmp_t *r, int n)
 
 Try to create a dmp_t instance to r with n digits limits
 
@@ -53,7 +55,7 @@ Memory blocks are allocated from heap, so dmp_free is supposed to call after job
 	dmp_new(r, 10); // memory from heap
 	dmp_free(r)
 
-##### void dmp_init(dmp_t *r, int n, int *s)
+#### void dmp_init(dmp_t *r, int n, int *s)
 
 Simply initialize a dmp_t instance, no memory allocates
 
@@ -63,7 +65,7 @@ For those who want to rock with heap memory
 	int s[10];
 	dmp_init(&r, 10, s);
 	
-##### void dmp_load_str(dmp_t *r, const char *s)
+#### void dmp_load_str(dmp_t *r, const char *s)
 
 Initialize a dmp_t instance from a char string
 
@@ -73,7 +75,7 @@ Initialize a dmp_t instance from a char string
 	char sn[100] = "2333333333333333333333333";
 	dmp_load_str(&r, sn);
 	
-##### int dmp_add_s(dmp_t *r, const dmp_t *a, const dmp_t *b)
+#### int dmp_add_s(dmp_t *r, const dmp_t *a, const dmp_t *b)
 
 Do r = a+b
 
@@ -82,7 +84,7 @@ Do r = a+b
 	...
 	dmp_add_s(&r, &a, &b);
 
-##### int dmp_sub_s(dmp_t *r, const dmp_t *a, const dmp_t *b)
+#### int dmp_sub_s(dmp_t *r, const dmp_t *a, const dmp_t *b)
 
 Do r = a-b
 	
@@ -91,7 +93,7 @@ Do r = a-b
 	...
 	dmp_sub_s(&r, &a, &b);
 
-##### int dmp_mul_s(dmp_t *r, const dmp_t *a, const dmp_t *b)
+#### int dmp_mul_s(dmp_t *r, const dmp_t *a, const dmp_t *b)
 
 Do r = a*b
 	
@@ -100,7 +102,7 @@ Do r = a*b
 	...
 	dmp_mul_s(&r, &a, &b);
 
-##### char*   dmp_get_str(dmp_t *r, char *s)
+#### char*   dmp_get_str(dmp_t *r, char *s)
 
 Returns dmp_t as a char string
 
@@ -113,7 +115,7 @@ Allocate memory from heap, if s == NULL
 	char s[100];
 	printf("%s\n", dmp_get_str(&r, s));
 
-##### void    dmp_free(dmp_t *r)
+#### void    dmp_free(dmp_t *r)
 
 Free memory
 
@@ -123,7 +125,7 @@ Rock with dmp_new, or boom
 	dmp_new(r, 10); // memory from heap
 	dmp_free(r)
 	
-##### int     dmp_cmp_abs(dmp_t *a, dmp_t *b)
+#### int     dmp_cmp_abs(dmp_t *a, dmp_t *b)
 
 Compare |a| and |b|
 
