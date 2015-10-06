@@ -8,7 +8,7 @@ ds_debug.h
 
 For debug and test
 
-##### DS_LOG_DEBUG(fmt, args)
+#### DS_LOG_DEBUG(fmt, args)
 
 Print a line of debug message
 
@@ -17,7 +17,7 @@ Print a line of debug message
 
     DS_LOG_DEBUG("%s %d", str, n)
 
-##### DS_EQUAL*(a, b)
+#### DS_EQUAL*(a, b)
 
 Tell whether variable a and b equal
 
