@@ -2,6 +2,10 @@ dslib
 =============
 Codes for programming competitions and contests
 
+TODO list
+=============
+* Fast Power Algorithm
+* Matrix Fast Power Algorithm
 
 ds_debug.h
 =============
