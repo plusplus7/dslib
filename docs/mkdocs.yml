@@ -1,0 +1,7 @@
+site_name: DSLIB
+pages:
+- Home: 'index.md'
+- ds_debug: 'ds_debug.md'
+- ds_multiple_precision: 'ds_multiple_precision.md'
+- ds_number: 'ds_number.md'
+theme: readthedocs
