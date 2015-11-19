@@ -187,44 +187,16 @@ int test_dmp_mul_s()
 
 int run_tests()
 {
-    int res = 1;
-    int overall = 0;
-
-    printf("* Running test_dmp_init\n");
-    res = test_dmp_init();
-    overall = overall + res;
-    printf("* test_dmp_init: %s\n\n", !res?"PASS":"FAILED");
-
-    printf("* Running test_dmp_new\n");
-    res = test_dmp_new();
-    overall = overall + res;
-    printf("* test_dmp_new: %s\n\n", !res?"PASS":"FAILED");
-
-    printf("* Running test_dmp_load_str\n");
-    res = test_dmp_load_str();
-    overall = overall + res;
-    printf("* test_dmp_load_str: %s\n\n", !res?"PASS":"FAILED");
-
-    printf("* Running test_dmp_get_str\n");
-    res = test_dmp_get_str();
-    overall = overall + res;
-    printf("* test_dmp_get_str: %s\n\n", !res?"PASS":"FAILED");
-
-    printf("* Running test_dmp_add_s\n");
-    res = test_dmp_add_s();
-    overall = overall + res;
-    printf("* test_dmp_add_s: %s\n\n", !res?"PASS":"FAILED");
-
-    printf("* Running test_dmp_sub_s\n");
-    res = test_dmp_sub_s();
-    overall = overall + res;
-    printf("* test_dmp_sub_s: %s\n\n", !res?"PASS":"FAILED");
-
-    printf("* Running test_dmp_mul_s\n");
-    res = test_dmp_mul_s();
-    overall = overall + res;
-    printf("* test_dmp_mul_s: %s\n\n", !res?"PASS":"FAILED");
-    return overall;
+    DS_UNITTEST_START(ds_multiple_precision_test);
+    DS_UNITTEST_ADD(test_dmp_init);
+    DS_UNITTEST_ADD(test_dmp_new);
+    DS_UNITTEST_ADD(test_dmp_load_str);
+    DS_UNITTEST_ADD(test_dmp_get_str);
+    DS_UNITTEST_ADD(test_dmp_init);
+    DS_UNITTEST_ADD(test_dmp_add_s);
+    DS_UNITTEST_ADD(test_dmp_sub_s);
+    DS_UNITTEST_ADD(test_dmp_mul_s);
+    DS_UNITTEST_END(ds_multiple_precision_test);
 }
 
 int main()

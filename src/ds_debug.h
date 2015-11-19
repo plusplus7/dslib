@@ -27,4 +27,8 @@ void ds_basic_log(const char *filename, int line, const char *fmt, ...)
     va_end(args);
 }
 
+#define DS_UNITTEST_START(testname)  { printf("\n[\033[32m  START  \033[00m]: Test %s start\n", #testname); int overall = 0; int res = 0; do {
+#define DS_UNITTEST_ADD(casename) do {printf("[\033[32m  RUN    \033[00m]: Running %s\n", #casename); res = casename(); overall = overall + res; printf("%s: %s\n", !res?"[\033[32m  PASS   \033[00m]":"[\033[31m  FAILED \033[00m]", #casename);}while(0);
+#define DS_UNITTEST_END(testname)     printf("\n* Test %s %s\n\n", #testname, !overall?"\033[32mPASS\033[00m":"\033[31mFAILED\033[00m");  } while(0); return overall; }
+
 #endif /* end of DSLIB_DS_DEBUG_H_ */

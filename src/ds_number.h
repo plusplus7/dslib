@@ -5,6 +5,33 @@
 #include <string.h>
 
 int* ds_basic_prime_number_sieve(size_t count, int* target);
+long long fast_power(long long x, long long n);
+
+long long ds_fast_power(long long x, unsigned long long n)
+{
+    long long res = 1ll;
+    while (n) {
+        if (n&1) {
+            res = res*x;
+        }
+        x = x*x;
+        n = n>>1;
+    }
+    return res;
+}
+
+long long ds_fast_power_mod(long long x, unsigned long long n, unsigned long long mod)
+{
+    long long res = 1ll;
+    while(n) {
+        if (n&1) {
+            res = (res*x)%mod;
+        }
+        x = (x*x)%mod;
+        n = n>>1;
+    }
+    return res;
+}
 
 int* ds_basic_prime_number_sieve(size_t count, int* target)
 {
