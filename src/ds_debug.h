@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include <string.h>
 
+#define DS_DEBUG(fmt, ...) do {fprintf(stderr, "[BASIC]"#fmt, ##__VA_ARGS__);}while(0)
 #ifdef DS_LOG_DEBUG_ON
     #define DS_LOG_DEBUG(fmt, args...) ds_basic_log(__FILE__, __LINE__, fmt, ## args)
 #else

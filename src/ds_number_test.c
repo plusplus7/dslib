@@ -28,10 +28,37 @@ int test_ds_fast_power()
     return 0;
 }
 
+int test_ds_fast_power_mod()
+{
+    long long a = 0ll;
+    a = ds_fast_power_mod(2, 32, 1000000007);
+    if (!DS_EQUAL(a, 294967268ll)) {
+        DS_LOG_DEBUG("ds_fast_power_mod got wrong: %lld", a);
+        return 1;
+    }
+    a = ds_fast_power_mod(777, 5, 1000000007);
+    if (!DS_EQUAL(a, 722145208ll)) {
+        DS_LOG_DEBUG("ds_fast_power_mod got wrong: %lld", a);
+        return 1;
+    }
+    for (int i=700; i<720; i++) {
+        for (int j=0; j<5; j++) {
+            long long c = (long long)(pow(i, j))%13ll;
+            long long cc = ds_fast_power_mod(i, j, 13);
+            if (!DS_EQUAL(cc, c)) {
+                DS_LOG_DEBUG("ds_fast_power_mod got wrong: %lld pow(%d %d)", cc, i, j);
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
 int run_tests()
 {
     DS_UNITTEST_START(ds_number_test);
     DS_UNITTEST_ADD(test_ds_fast_power);
+    DS_UNITTEST_ADD(test_ds_fast_power_mod);
     DS_UNITTEST_END(ds_number_test);
 }
 
