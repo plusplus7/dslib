@@ -15,5 +15,4 @@ Documents Link
 
 TODO list
 =============
-* Fast Power Algorithm
 * Matrix Fast Power Algorithm
