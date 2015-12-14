@@ -5,7 +5,7 @@
 #include <string.h>
 
 int* ds_basic_prime_number_sieve(size_t count, int* target);
-long long fast_power(long long x, long long n);
+long long ds_fast_power(long long x, long long n);
 long long ds_fast_power_mod(long long x, unsigned long long n, unsigned long long mod);
 
 long long ds_fast_power(long long x, unsigned long long n)
