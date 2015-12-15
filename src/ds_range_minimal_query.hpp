@@ -36,6 +36,7 @@ public:
             }
         }
     }
+
     void init(T *array, int n)
     {
         m_len = n;
@@ -52,6 +53,7 @@ public:
         m_sparse_table = stable;
         _init(array);
     }
+
     int query(int l, int r)
     {
         int k=0;
