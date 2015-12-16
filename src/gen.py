@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import sys
 import re
 
@@ -29,5 +30,9 @@ try:
 except:
     print "Generate template file"
     codes = precodes + "int main()\n{\nreturn 0;\n}"
-fd = open(sys.argv[1] + ".cpp", "w")
+if os.path.isfile(sys.argv[1]):
+    print sys.argv[1], "file exists, renamed as", sys.argv[1] + ".cpp"
+    sys.argv[1] = sys.argv[1] + ".cpp"
+
+fd = open(sys.argv[1], "w")
 fd.write(codes)
